@@ -1,0 +1,517 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    /*border: 1px solid purple;*/
+}
+
+/* styles.css */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Combined Section */
+.combined-section {
+    background-image: url("nav.2.jpg");
+    /* Add your image URL here */
+    background-size: cover;
+    /* Cover the entire section */
+    background-position: center;
+    /* Center the image */
+    color: white;
+    /* Text color */
+}
+
+/* Navbar Container */
+#header1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    /* Semi-transparent background */
+    padding: 0 20px;
+}
+
+/* Logo Styling */
+#logo {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+/* Searchbox Container */
+#searchbox {
+    display: flex;
+    align-items: center;
+}
+
+/* Search Input Styling */
+#searchbox input {
+    background-color: #ffeaf1;
+    height: 35px;
+    width: 400px;
+    border: 0;
+    border-radius: 100px;
+    margin-left: 250px;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+/* Search Button Styling */
+#do {
+    height: 35px;
+    width: 50px;
+    margin-left: 10px;
+    border-radius: 50%;
+    border: 0;
+    background-color: #ff899a;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Options Container */
+#option {
+    display: flex;
+    align-items: center;
+}
+
+/* Option Links Styling */
+#option a {
+    margin-left: 20px;
+    font-size: 16px;
+    color: #ffeaf1;
+    text-decoration: none;
+}
+
+/* Login Button Styling */
+#login {
+    padding: 10px 20px;
+    border-radius: 100px;
+    color: white;
+    background-image: url("nav.2.jpg");
+    font-weight: bold;
+    font-size: 16px;
+    border: 0;
+    cursor: pointer;
+    box-shadow: 2px 19px 31px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading Bar */
+.heading-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    /* Semi-transparent background */
+    padding: 10px 0;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Navigation List */
+#nav-list {
+    display: flex;
+    list-style: none;
+    gap: 80px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Links */
+.nav-item a {
+    text-decoration: none;
+    color: #f0f0f0;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+/* Hover Effect */
+.nav-item a:hover {
+    color: #f0f0f0;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #header1 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #searchbox input {
+        width: 100%;
+        /* Full width on small screens */
+        margin-left: 0;
+        /* Remove left margin */
+    }
+
+    #option {
+        flex-direction: column;
+        margin-top: 10px;
+        /* Add spacing */
+    }
+
+    #nav-list {
+        flex-direction: column;
+        /* Stack navigation links */
+        gap: 10px;
+        /* Reduce gap between items */
+    }
+
+    #nav-list li {
+        text-align: center;
+        /* Center align on small screens */
+    }
+}
+
+/* Popup content styles */
+/* Popup Layout Styles */
+.popup {
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.popup.center {
+    max-width: 400px;
+    width: 80%;
+}
+
+.popup-content {
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Input and Textarea Styles */
+.popup-content input,
+.popup-content textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Button Styles */
+.popup-content button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff899a;
+    /* Example button color */
+    color: white;
+    cursor: pointer;
+}
+
+/* Colorful Popup Styles */
+.popup-content.colorful {
+    background-color: #f7f8fc;
+    border: 2px solid #ff899a;
+    /* Colorful border */
+    padding: 20px;
+}
+
+.popup-content.colorful input,
+.popup-content.colorful textarea {
+    width: 80%;
+    margin: 10px 0;
+}
+
+.popup-content.colorful button {
+    background-color: #ff899a;
+    padding: 10px 15px;
+}
+
+/* CSS for Popup Layout */
+
+.popup {
+    display: none;
+    position: fixed;
+    background-color: transparent;
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.popup-content {
+    background-color: #64aaff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Pop-up positioning */
+.popup.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup.bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.popup.bottom-right {
+    bottom: 20px;
+    right: 20px;
+    width: auto;
+}
+
+.popup.left {
+    top: 20%;
+    left: 0;
+}
+
+/* Show Pop-up */
+.popup.show {
+    display: block;
+}
+
+
+
+/* General popup styles */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 100vh;
+    background: transparent;
+    z-index: 999;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.popup-content {
+    padding: 10px;
+    color: white;
+}
+
+.popup.show {
+    transform: translateX(0);
+}
+
+/* Close button styling */
+.popup-content button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup-content button:hover {
+    background-color: #d81b60;
+}
+
+/* Newspaper list styling */
+.newspaper-item a {
+    display: block;
+    color: #ffeb3b;
+    font-size: 18px;
+    margin: 10px 0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.newspaper-item a:hover {
+    color: #ff5722;
+}
+
+/* Select filter styling */
+#country-filter {
+    width: 100%;
+    padding: 10px;
+    background-color: #7e57c2;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#country-filter:hover {
+    background-color: #673ab7;
+}
+
+/* Animation for popup appearance */
+.popup {
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Scrollbar customization */
+.popup::-webkit-scrollbar {
+    width: 10px;
+}
+
+.popup::-webkit-scrollbar-thumb {
+    background-color: #ff4081;
+    border-radius: 10px;
+}
+
+.popup::-webkit-scrollbar-track {
+    background-color: #FFC400;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* General Styles */
+
+
+/* Part 1 Styles */
+.part1 {
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.part1 h1 {
+    margin-bottom: 20px;
+}
+
+.part1 .news-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Four columns */
+    gap: 5px;
+    /* Space between columns */
+}
+
+.part1 .news-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.part1 .news-item img {
+    width: 40px;
+    /* Adjust size of the image */
+    height: 40px;
+    /* Adjust size of the image */
+    margin-right: 10px;
+    /* Space between image and text */
+}
+
+/* Part 2 Styles */
+.part2 {
+    padding: 10px;
+}
+
+.part2 h2 {
+    margin-bottom: 20px;
+}
+
+.part2 .news-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Four articles per row */
+    gap: 15px;
+    /* Space between articles */
+}
+
+.news-article {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.news-image img {
+    width: 100%;
+    height: 150px;
+    /* Fixed height for images */
+    object-fit: cover;
+    /* Maintain aspect ratio */
+}
+
+.news-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    background-color: white;
+    /* Semi-transparent background */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.news-info {
+    padding: 10px;
+}
+
+/* Load More Button Styles */
+.load-more {
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    /* Center the button */
+    width: 150px;
+    /* Button width */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.load-more:hover {
+    background-color: #0056b3;
+    /* Darker shade on hover */
+}
+
+
+
+/* Add your existing styles here */
+
+/* Popup Styling */

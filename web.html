@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARKSHEET.com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="webstyle.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+</head>
+
+<body>
+    <div id="results"></div>
+
+    <!-- Combined Section -->
+    <section class="combined-section">
+        <!-- Navigation Bar -->
+        <header id="header1">
+            <!-- Logo -->
+            <a id="logo" href="#">DARKSHEET.com</a>
+
+            <div id="searchbox">
+                <input type="text" id="search-box" placeholder="dark-search">
+                <button id="do">DO</button>
+            </div>
+
+
+            <!-- Navigation -->
+            <div id="option">
+                <a id="myButton" href="#"><i class="fa-solid fa-mobile" alt="Mobile"></i>Darkchat</a>
+                <a id="option2" href="#" onclick="showPopup('mail-popup')"><i class="fa-solid fa-envelope"
+                        alt="Mail"></i>Mail</a>
+
+                <!-- Center Pop-up (Mail) -->
+                <div id="mail-popup" class="popup center">
+                    <div class="popup-content">
+                        <h3>Your Website Mail</h3>
+                        <button onclick="loginViaGmail()">Login via Gmail</button>
+                        <button onclick="closePopup('mail-popup')">Close</button>
+                    </div>
+                </div>
+
+                <a id="option3" href="#"><i class="fa-solid fa-gamepad" alt="Latest Games"></i>Latest Game</a>
+                <!-- Bottom Pop-up (Latest Games) -->
+                <div id="games-popup" class="popup bottom">
+                    <div class="popup-content">
+                        <h3>Latest Games</h3>
+                        <p style="color: #ff1a1a;">Game news and links...</p>
+                        <button onclick="closePopup('games-popup')">Close</button>
+                    </div>
+                </div>
+                <a id="option4" href="#">Accessibility</a>
+                <a id="option5" href="#">Quick Access</a>
+            </div>
+
+            <!-- Login Button -->
+            <button id="login" onclick="goToLogin()">Login</button>
+
+            <!-- Bottom-right Pop-up (Regret Message) -->
+            <div id="regret-popup" class="popup bottom-right">
+                <div class="popup-content">
+                    <p style="background-color:red; font-weight: bolder;">Sorry, this
+                        feature is not available.</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Heading Bar -->
+        <nav class="heading-bar">
+            <ul id="nav-list">
+                <li class="nav-item"><a href="#">News</a></li>
+                <li class="nav-item"><a href="#">Hot Question</a></li>
+                <li class="nav-item"><a href="#">Finance</a></li>
+                <li class="nav-item"><a href="#">Science and Technology</a></li>
+                <li class="nav-item"><a href="#">Entertainment</a></li>
+                <li class="nav-item"><a href="#">Sport</a></li>
+                <li class="nav-item"><a href="#">Global</a></li>
+                <li class="nav-item"><a href="#">Games</a></li>
+            </ul>
+        </nav>
+
+        <!-- Left-Side Pop-up (News) -->
+        <div id="news-popup" class="popup left">
+            <div class="popup-content">
+
+                <label for="country-filter"></label>
+                <select id="country-filter" onchange="filterNewspapers()">
+
+                    <option value="india">India</option>
+                    <option value="global">Global</option>
+                    <option value="all">All</option>
+                </select>
+                <ul id="newspaper-list">
+                    <li class="newspaper-item india">
+                        <a href="https://www.hindustantimes.com" target="_blank">Hindustan Times</a>
+                    </li>
+                    <li class="newspaper-item india">
+                        <a href="https://timesofindia.indiatimes.com" target="_blank">Times of India</a>
+                    </li>
+                    <li class="newspaper-item india">
+                        <a href="https://www.ndtv.com" target="_blank">NDTV</a>
+                    </li>
+                    <li class="newspaper-item india">
+                        <a href="https://www.bombaytimes.com" target="_blank">Bombay Times</a>
+                    </li>
+
+                    <li class="newspaper-item global">
+                        <a href="https://www.globaltimes.cn" target="_blank">Global Times</a>
+                    </li>
+                    <li class="newspaper-item global">
+                        <a href="https://www.nytimes.com/international" target="_blank">The New York Times</a>
+                    </li>
+                    <li class="newspaper-item global">
+                        <a href="https://www.chinadaily.com.cn" target="_blank">China Daily</a>
+                    </li>
+                    <li class="newspaper-item global">
+                        <a href="https://www.lemonde.fr/en" target="_blank">Le Mondes</a>
+                    </li>
+
+
+                </ul>
+                <button onclick="closePopup('news-popup')">Close</button>
+            </div>
+        </div>
+    </section>
+    <div id="search-results" style="display:none;">
+        <button class="close-search" onclick="closeSearch()">Close Search</button>
+        <!-- News items will be populated here dynamically -->
+    </div>
+
+    <div class="part1">
+        <section class="news-headline-section">
+            <h1>Latest Sports Headlines</h1>
+            <div class="news-container">
+                <div class="news-column">
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article1">Headline 1: Exciting match ends in a draw.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article2">Headline 2: Team A triumphs in the championship.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article3">Headline 3: Player X scores a hat-trick.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article4">Headline 4: Coach resigns after poor performance.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article5">Headline 5: New stadium opens with a grand ceremony.</a></span>
+                    </div>
+                </div>
+                <div class="news-column">
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article6">Headline 6: Upcoming player of the week announced.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article7">Headline 7: Fans celebrate team's victory.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article8">Headline 8: Transfer rumors heat up.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article9">Headline 9: Injury updates from the latest matches.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article10">Headline 10: Historic records broken this season.</a></span>
+                    </div>
+                </div>
+                <div class="news-column">
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article11">Headline 11: Rival teams gear up for the finals.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article12">Headline 12: Player Y wins MVP award.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article13">Headline 13: Off-season training begins.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article14">Headline 14: Sponsorship deal announced.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article15">Headline 15: New league format introduced.</a></span>
+                    </div>
+                </div>
+                <div class="news-column">
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article16">Headline 16: Analyst predicts surprise results.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article17">Headline 17: Fan favorites for the next season.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article18">Headline 18: Community event supports local teams.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article19">Headline 19: New training facility unveiled.</a></span>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/15" alt="News Image">
+                        <span><a href="#article20">Headline 20: Veteran players announce retirement.</a></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="part2">
+        <section class="news-section">
+            <h2>Latest News</h2>
+            <div class="news-container"></div>
+            <button class="load-more" onclick="fetchMoreNews()">Load More</button>
+        </section>
+    </div>
+
+
+
+    </main><!--main body-->
+    <script src="web_headingsection.js"></script>
+    <script src="hot-section.js"></script>
+    <script src="news20.js"></script>
+</body>
+
+
+</html>

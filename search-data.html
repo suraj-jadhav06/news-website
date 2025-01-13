@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Logo Styling */
+        #logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            color: #d62d24;
+        }
+
+        #logo:hover {
+            transform: scale(1.1);
+        }
+
+        /* Search Bar Styling */
+        #search-bar {
+            width: 200px;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 20px;
+            border: 2px solid #ffcc00;
+            transition: width 0.4s ease, border-color 0.4s ease;
+        }
+
+        #search-bar:focus {
+            width: 250px;
+            border-color: #d62d24;
+            outline: none;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #d62d24;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a82218;
+            transform: scale(1.05);
+        }
+
+        /* Results Section */
+        #results {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .result-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .result-item:hover {
+            transform: scale(1.02);
+        }
+
+        /* Video Section */
+        #video-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+
+            #search-bar {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            button {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        /* Logo styling with animations */
+        #logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #4285f4;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Hover effect */
+        #logo:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div id="logo">Dark Search</div>
+        <input type="text" id="search-bar" placeholder="Search again">
+        <button onclick="searchAgain()">Search</button>
+    </nav>
+
+    <!-- Search Results Section -->
+    <div id="results"></div>
+
+    <!-- Video Section -->
+    <div id="video-section">
+        <h2>Featured Video</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/some_video_id" frameborder="0"
+            allowfullscreen></iframe>
+    </div>
+
+    <script>
+        // Fetch the search query from localStorage
+        const query = localStorage.getItem('searchQuery');
+
+        // Use the query to fetch search results using the Google Custom Search API
+        const apiKey = 'AIzaSyAOsUEDEcz3ibB2WmsIpxEvS_w6qMKCBrI'; // Replace with your API key
+        const searchEngineId = '1244c50a7d3694d97'; // Replace with your Search Engine ID
+
+        function fetchSearchResults(query) {
+            if (query) {
+                const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${searchEngineId}&q=${query}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        let output = '';
+                        if (data.items) {
+                            data.items.forEach(item => {
+                                output += `
+                                    <div class="result-item">
+                                        <h3><a href="${item.link}">${item.title}</a></h3> <!-- Removed target="_blank" -->
+                                        <p>${item.snippet}</p>
+                                    </div>
+                                `;
+                            });
+                        } else {
+                            output += '<p>No results found.</p>';
+                        }
+                        document.getElementById('results').innerHTML = output;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching search results:', error);
+                        document.getElementById('results').innerHTML = '<p>There was an error fetching the data.</p>';
+                    });
+            } else {
+                document.getElementById('results').innerHTML = '<p>No query found.</p>';
+            }
+        }
+
+        // Initial fetch if a query exists
+        fetchSearchResults(query);
+
+        function searchAgain() {
+            const newQuery = document.getElementById('search-bar').value;
+            if (newQuery) {
+                localStorage.setItem('searchQuery', newQuery); // Save the new query
+                fetchSearchResults(newQuery); // Fetch results for the new query
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
